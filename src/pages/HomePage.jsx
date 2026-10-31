@@ -1,76 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { createRoot } from "react-dom/client";
 import { motion } from "motion/react";
 import {
   siDocker, siDjango, siFlutter, siGithub, siJavascript, siLaravel,
   siMysql, siNginx, siOpenapiinitiative, siReact, siSpringboot
 } from "simple-icons";
-import "./styles.css";
-import profile from "./assets/photo_2026-01-05_00-08-44.jpg";
-
-const projects = [
-  { number: "01", title: "E-Commerce API", description: "A Laravel-based e-commerce backend with authentication, categories, products, variants, cart, wishlist, checkout and order management.", tags: ["Laravel", "PHP", "MySQL", "REST API", "Sanctum"], link: "#" },
-  { number: "02", title: "POS Mobile App", description: "A Flutter POS application with product browsing, categories, search, cart management, authentication and REST API integration.", tags: ["Flutter", "Dart", "REST API", "Provider"], link: "#" },
-  { number: "03", title: "Order Management API", description: "A Spring Boot REST API using layered architecture, DTOs, ModelMapper, authentication and database persistence for order workflows.", tags: ["Spring Boot", "Java", "JPA", "MySQL"], link: "#" },
-  { number: "04", title: "Customer Management API", description: "A Django REST API project focused on structured CRUD operations, database models and API endpoints for customer management.", tags: ["Django", "Python", "REST API", "MySQL"], link: "#" }
-];
-
-const skills = [
-  ["React", "Frontend"], ["JavaScript", "Frontend"], ["Laravel", "Backend"],
-  ["Spring Boot", "Backend"], ["Django", "Backend"], ["Flutter", "Mobile"],
-  ["MySQL", "Database"], ["REST API", "Architecture"], ["Git / GitHub", "Tools"],
-  ["Docker", "DevOps"], ["Nginx", "DevOps"], ["AWS EC2", "Cloud"]
-];
-
-const skillIcons = {
-  React: siReact, JavaScript: siJavascript, Laravel: siLaravel,
-  "Spring Boot": siSpringboot, Django: siDjango, Flutter: siFlutter,
-  MySQL: siMysql, "REST API": siOpenapiinitiative, "Git / GitHub": siGithub,
-  Docker: siDocker, Nginx: siNginx
-};
-
-const ease = [0.22, 1, 0.36, 1];
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease } }
-};
-
-function SkillIcon({ name }) {
-  const icon = skillIcons[name];
-  if (!icon) {
-    return <svg viewBox="0 0 32 32" role="img" aria-label="AWS icon" className="h-6 w-6 fill-none stroke-current stroke-[1.8]">
-      <text x="16" y="20" textAnchor="middle" className="fill-current stroke-none text-[12px] font-bold">aws</text>
-      <path d="M7 24c6 4 13 4 19 0" />
-    </svg>;
-  }
-  return <svg viewBox="0 0 24 24" role="img" aria-label={`${name} icon`} className="h-6 w-6 fill-current">
-    <path d={icon.path} />
-  </svg>;
-}
-
-function Arrow() {
-  return <span aria-hidden="true" className="text-[var(--accent-soft)]">↗</span>;
-}
-
-function Reveal({ children, className = "", delay = 0, y = 28 }) {
-  return <motion.div
-    className={className}
-    initial={{ opacity: 0, y }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.18 }}
-    transition={{ duration: 0.65, delay, ease }}
-  >{children}</motion.div>;
-}
-
-function Stagger({ children, className = "" }) {
-  return <motion.div
-    className={className}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true, amount: 0.12 }}
-    variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
-  >{children}</motion.div>;
-}
+import profile from "../assets/photo_2026-01-05_00-08-44.jpg";
+import SkillIcon from "../components/skills/SkillIcon.jsx";
+import Arrow from "../components/ui/Arrow.jsx";
+import Reveal from "../components/motion/Reveal.jsx";
+import Stagger from "../components/motion/Stagger.jsx";
+import SiteHeader from "../components/layout/SiteHeader.jsx";
+import SiteFooter from "../components/layout/SiteFooter.jsx";
+import { projects, skills, skillIcons } from "../data/portfolio.js";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -89,27 +29,7 @@ function App() {
   const muted = "text-[var(--muted)]";
 
   return <div className="site min-h-screen overflow-x-clip bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
-    <header className="sticky top-0 z-[1000] flex h-[86px] w-full items-center justify-between border-b border-[var(--line)] bg-[var(--header)] px-[max(24px,calc((100%-1180px)/2))] backdrop-blur-[14px] max-[800px]:h-[70px] max-[800px]:px-[15px]">
-      <a className="text-[25px] font-bold tracking-[-1px]" href="#home">Rotha<span className="text-[var(--accent)]">.</span></a>
-      <nav className="flex gap-[34px] text-sm text-[#bdbab4] max-[800px]:hidden">
-        <a className="transition-colors hover:text-[var(--accent)]" href="#about">About</a>
-        <a className="transition-colors hover:text-[var(--accent)]" href="#skills">Skills</a>
-        <a className="transition-colors hover:text-[var(--accent)]" href="#projects">Projects</a>
-        <a className="transition-colors hover:text-[var(--accent)]" href="#contact">Contact</a>
-      </nav>
-      <div className="flex items-center gap-[10px] max-[800px]:gap-1.5">
-        <button
-          className="inline-flex cursor-pointer items-center gap-[7px] rounded-full border border-[var(--button-border)] bg-transparent px-[13px] py-[10px] text-xs text-[var(--text)] transition hover:-translate-y-px hover:border-[var(--accent)] max-[800px]:[&>span:last-child]:hidden"
-          onClick={() => setDarkMode(value => !value)}
-          aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-          title={darkMode ? "Light mode" : "Dark mode"}
-        >
-          <span className="text-sm leading-none">{darkMode ? "☀" : "☾"}</span>
-          <span>{darkMode ? "Light" : "Dark"}</span>
-        </button>
-        <a className="rounded-full border border-[var(--button-border)] px-[17px] py-[11px] text-sm text-[var(--text)] transition hover:-translate-y-px hover:border-[var(--accent)] hover:text-[var(--accent)] max-[480px]:px-[13px] max-[480px]:py-[9px] max-[480px]:text-xs" href="#contact">Let's talk <Arrow /></a>
-      </div>
-    </header>
+    <SiteHeader darkMode={darkMode} onToggleTheme={() => setDarkMode(value => !value)} />
 
     <main>
       <section id="home" className={`${section} grid min-h-[calc(100vh-86px)] grid-cols-[1.08fr_.92fr] items-center gap-[70px] pt-[75px] max-[800px]:grid-cols-1 max-[800px]:gap-[50px] max-[800px]:pt-[50px]`}>
@@ -187,10 +107,8 @@ function App() {
       </section>
     </main>
 
-    <footer className="mx-auto flex w-[min(1180px,calc(100%-48px))] justify-between border-t border-[var(--line)] py-7 pb-10 text-[11px] uppercase tracking-[1px] text-[var(--footer)] max-[480px]:flex-col max-[480px]:gap-[14px]">
-      <span>© 2026 Oeung Ratha</span><span>Built with React + Tailwind CSS</span><a className="transition hover:text-[var(--accent)]" href="#home">Back to top ↑</a>
-    </footer>
+    <SiteFooter />
   </div>;
 }
 
-createRoot(document.getElementById("root")).render(<React.StrictMode><App /></React.StrictMode>);
+export default App;
