@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import Reveal from "../motion/Reveal.jsx";
 import Stagger from "../motion/Stagger.jsx";
 import SkillIcon from "../skills/SkillIcon.jsx";

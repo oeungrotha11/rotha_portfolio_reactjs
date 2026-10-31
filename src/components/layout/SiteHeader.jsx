@@ -1,10 +1,10 @@
-import { Arrow } from "../ui/Arrow.jsx";
+import Arrow from "../ui/Arrow.jsx";
 
 export default function SiteHeader({ darkMode, onToggleTheme }) {
   return (
     <header className="sticky top-0 z-[1000] flex h-[86px] w-full items-center justify-between border-b border-[var(--line)] bg-[var(--header)] px-[max(24px,calc((100%-1180px)/2))] backdrop-blur-[14px] max-[800px]:h-[70px] max-[800px]:px-[15px]"> 
       <a className="text-[25px] font-bold tracking-[-1px]" href="#home">Rotha<span className="text-[var(--accent)]">.</span></a> 
-      <nav className="flex gap-[34px] text-sm text-[#bdbab4] max-[800px]:hidden"> 
+      <nav className="flex gap-[34px] text-sm text-[var(--muted)] max-[800px]:hidden"> 
         <a className="transition-colors hover:text-[var(--accent)]" href="#about">About</a> 
         <a className="transition-colors hover:text-[var(--accent)]" href="#skills">Skills</a> 
         <a className="transition-colors hover:text-[var(--accent)]" href="#projects">Projects</a> 
