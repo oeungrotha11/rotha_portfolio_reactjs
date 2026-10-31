@@ -2,149 +2,75 @@ import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { motion } from "motion/react";
 import {
-  siDocker,
-  siDjango,
-  siFlutter,
-  siGithub,
-  siJavascript,
-  siLaravel,
-  siMysql,
-  siNginx,
-  siOpenapiinitiative,
-  siReact,
-  siSpringboot
+  siDocker, siDjango, siFlutter, siGithub, siJavascript, siLaravel,
+  siMysql, siNginx, siOpenapiinitiative, siReact, siSpringboot
 } from "simple-icons";
 import "./styles.css";
 import profile from "./assets/photo_2026-01-05_00-08-44.jpg";
 
 const projects = [
-  {
-    number: "01",
-    title: "E-Commerce API",
-    description:
-      "A Laravel-based e-commerce backend with authentication, categories, products, variants, cart, wishlist, checkout and order management.",
-    tags: ["Laravel", "PHP", "MySQL", "REST API", "Sanctum"],
-    link: "#"
-  },
-  {
-    number: "02",
-    title: "POS Mobile App",
-    description:
-      "A Flutter POS application with product browsing, categories, search, cart management, authentication and REST API integration.",
-    tags: ["Flutter", "Dart", "REST API", "Provider"],
-    link: "#"
-  },
-  {
-    number: "03",
-    title: "Order Management API",
-    description:
-      "A Spring Boot REST API using layered architecture, DTOs, ModelMapper, authentication and database persistence for order workflows.",
-    tags: ["Spring Boot", "Java", "JPA", "MySQL"],
-    link: "#"
-  },
-  {
-    number: "04",
-    title: "Customer Management API",
-    description:
-      "A Django REST API project focused on structured CRUD operations, database models and API endpoints for customer management.",
-    tags: ["Django", "Python", "REST API", "MySQL"],
-    link: "#"
-  }
+  { number: "01", title: "E-Commerce API", description: "A Laravel-based e-commerce backend with authentication, categories, products, variants, cart, wishlist, checkout and order management.", tags: ["Laravel", "PHP", "MySQL", "REST API", "Sanctum"], link: "#" },
+  { number: "02", title: "POS Mobile App", description: "A Flutter POS application with product browsing, categories, search, cart management, authentication and REST API integration.", tags: ["Flutter", "Dart", "REST API", "Provider"], link: "#" },
+  { number: "03", title: "Order Management API", description: "A Spring Boot REST API using layered architecture, DTOs, ModelMapper, authentication and database persistence for order workflows.", tags: ["Spring Boot", "Java", "JPA", "MySQL"], link: "#" },
+  { number: "04", title: "Customer Management API", description: "A Django REST API project focused on structured CRUD operations, database models and API endpoints for customer management.", tags: ["Django", "Python", "REST API", "MySQL"], link: "#" }
 ];
 
 const skills = [
-  ["React", "Frontend"],
-  ["JavaScript", "Frontend"],
-  ["Laravel", "Backend"],
-  ["Spring Boot", "Backend"],
-  ["Django", "Backend"],
-  ["Flutter", "Mobile"],
-  ["MySQL", "Database"],
-  ["REST API", "Architecture"],
-  ["Git / GitHub", "Tools"],
-  ["Docker", "DevOps"],
-  ["Nginx", "DevOps"],
-  ["AWS EC2", "Cloud"]
+  ["React", "Frontend"], ["JavaScript", "Frontend"], ["Laravel", "Backend"],
+  ["Spring Boot", "Backend"], ["Django", "Backend"], ["Flutter", "Mobile"],
+  ["MySQL", "Database"], ["REST API", "Architecture"], ["Git / GitHub", "Tools"],
+  ["Docker", "DevOps"], ["Nginx", "DevOps"], ["AWS EC2", "Cloud"]
 ];
 
 const skillIcons = {
-  React: siReact,
-  JavaScript: siJavascript,
-  Laravel: siLaravel,
-  "Spring Boot": siSpringboot,
-  Django: siDjango,
-  Flutter: siFlutter,
-  MySQL: siMysql,
-  "REST API": siOpenapiinitiative,
-  "Git / GitHub": siGithub,
-  Docker: siDocker,
-  Nginx: siNginx
+  React: siReact, JavaScript: siJavascript, Laravel: siLaravel,
+  "Spring Boot": siSpringboot, Django: siDjango, Flutter: siFlutter,
+  MySQL: siMysql, "REST API": siOpenapiinitiative, "Git / GitHub": siGithub,
+  Docker: siDocker, Nginx: siNginx
+};
+
+const ease = [0.22, 1, 0.36, 1];
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease } }
 };
 
 function SkillIcon({ name }) {
   const icon = skillIcons[name];
-
   if (!icon) {
-    return (
-      <svg viewBox="0 0 32 32" role="img" aria-label="AWS icon">
-        <text x="16" y="20" textAnchor="middle">aws</text>
-        <path d="M7 24c6 4 13 4 19 0" />
-      </svg>
-    );
+    return <svg viewBox="0 0 32 32" role="img" aria-label="AWS icon" className="h-6 w-6 fill-none stroke-current stroke-[1.8]">
+      <text x="16" y="20" textAnchor="middle" className="fill-current stroke-none text-[12px] font-bold">aws</text>
+      <path d="M7 24c6 4 13 4 19 0" />
+    </svg>;
   }
-
-  return (
-    <svg viewBox="0 0 24 24" role="img" aria-label={`${name} icon`}>
-      <path d={icon.path} />
-    </svg>
-  );
+  return <svg viewBox="0 0 24 24" role="img" aria-label={`${name} icon`} className="h-6 w-6 fill-current">
+    <path d={icon.path} />
+  </svg>;
 }
 
 function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+  return <span aria-hidden="true" className="text-[var(--accent-soft)]">↗</span>;
 }
 
 function Reveal({ children, className = "", delay = 0, y = 28 }) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <motion.div
+    className={className}
+    initial={{ opacity: 0, y }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.18 }}
+    transition={{ duration: 0.65, delay, ease }}
+  >{children}</motion.div>;
 }
 
 function Stagger({ children, className = "" }) {
-  return (
-    <motion.div
-      className={className}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.12 }}
-      variants={{
-        hidden: {},
-        show: {
-          transition: { staggerChildren: 0.08 }
-        }
-      }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <motion.div
+    className={className}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.12 }}
+    variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+  >{children}</motion.div>;
 }
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] }
-  }
-};
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -157,209 +83,114 @@ function App() {
     localStorage.setItem("ratha-theme", darkMode ? "dark" : "light");
   }, [darkMode]);
 
-  return (
-    <div className="site">
-      <header className="nav">
-        <a className="logo" href="#home">Rotha<span>.</span></a>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </nav>
-        <div className="nav-actions">
-          <button
-            className="theme-toggle"
-            onClick={() => setDarkMode((value) => !value)}
-            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-            title={darkMode ? "Light mode" : "Dark mode"}
-          >
-            <span className="theme-icon">{darkMode ? "☀" : "☾"}</span>
-            <span>{darkMode ? "Light" : "Dark"}</span>
-          </button>
-          <a className="nav-cta" href="#contact">Let's talk <Arrow /></a>
+  const section = "mx-auto w-[min(1180px,calc(100%-48px))] py-[120px] max-[800px]:w-[min(1180px,calc(100%-30px))] max-[800px]:py-[85px]";
+  const eyebrow = "mb-[25px] text-[11px] font-bold tracking-[2.5px] text-[var(--accent-soft)]";
+  const heading = "m-0 text-[clamp(43px,5vw,68px)] leading-none tracking-[-3px] max-[800px]:text-[clamp(40px,10vw,60px)]";
+  const muted = "text-[var(--muted)]";
+
+  return <div className="site min-h-screen overflow-x-clip bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
+    <header className="sticky top-0 z-[1000] flex h-[86px] w-full items-center justify-between border-b border-[var(--line)] bg-[var(--header)] px-[max(24px,calc((100%-1180px)/2))] backdrop-blur-[14px] max-[800px]:h-[70px] max-[800px]:px-[15px]">
+      <a className="text-[25px] font-bold tracking-[-1px]" href="#home">Rotha<span className="text-[var(--accent)]">.</span></a>
+      <nav className="flex gap-[34px] text-sm text-[#bdbab4] max-[800px]:hidden">
+        <a className="transition-colors hover:text-[var(--accent)]" href="#about">About</a>
+        <a className="transition-colors hover:text-[var(--accent)]" href="#skills">Skills</a>
+        <a className="transition-colors hover:text-[var(--accent)]" href="#projects">Projects</a>
+        <a className="transition-colors hover:text-[var(--accent)]" href="#contact">Contact</a>
+      </nav>
+      <div className="flex items-center gap-[10px] max-[800px]:gap-1.5">
+        <button
+          className="inline-flex cursor-pointer items-center gap-[7px] rounded-full border border-[var(--button-border)] bg-transparent px-[13px] py-[10px] text-xs text-[var(--text)] transition hover:-translate-y-px hover:border-[var(--accent)] max-[800px]:[&>span:last-child]:hidden"
+          onClick={() => setDarkMode(value => !value)}
+          aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          title={darkMode ? "Light mode" : "Dark mode"}
+        >
+          <span className="text-sm leading-none">{darkMode ? "☀" : "☾"}</span>
+          <span>{darkMode ? "Light" : "Dark"}</span>
+        </button>
+        <a className="rounded-full border border-[var(--button-border)] px-[17px] py-[11px] text-sm text-[var(--text)] transition hover:-translate-y-px hover:border-[var(--accent)] hover:text-[var(--accent)] max-[480px]:px-[13px] max-[480px]:py-[9px] max-[480px]:text-xs" href="#contact">Let's talk <Arrow /></a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" className={`${section} grid min-h-[calc(100vh-86px)] grid-cols-[1.08fr_.92fr] items-center gap-[70px] pt-[75px] max-[800px]:grid-cols-1 max-[800px]:gap-[50px] max-[800px]:pt-[50px]`}>
+        <motion.div className="max-[800px]:order-1" initial={{ opacity: 0, x: -35 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, ease }}>
+          <p className={eyebrow}>FULL STACK WEB DEVELOPER</p>
+          <h1 className="mb-7 max-w-[720px] text-[clamp(54px,7vw,92px)] font-bold leading-[.94] tracking-[-5px] max-[800px]:text-[clamp(49px,13vw,75px)] max-[800px]:tracking-[-3px]">Building digital<br /><em className="font-serif text-[var(--accent-soft)]">experiences</em> that work.</h1>
+          <p className={`max-w-[560px] text-[17px] leading-[1.8] ${muted}`}>Hi, I'm <strong className="text-[var(--text)]">Oeung Rotha</strong>. I create modern web applications and APIs with a focus on clean UI, solid backend architecture and real-world problem solving.</p>
+          <div className="my-[35px] mb-[27px] flex gap-3 max-[480px]:flex-col">
+            <a className="inline-flex items-center justify-center gap-[14px] rounded-[4px] bg-[var(--accent)] px-[22px] py-[15px] text-sm font-semibold text-white transition hover:-translate-y-[3px] hover:bg-[var(--accent-soft)]" href="#projects">View my work <Arrow /></a>
+            <a className="inline-flex items-center justify-center rounded-[4px] border border-[var(--button-border)] px-[22px] py-[15px] text-sm font-semibold text-[var(--text)] transition hover:-translate-y-[3px] hover:border-[var(--accent)]" href="#contact">Contact me</a>
+          </div>
+          <div className="flex items-center gap-3 text-xs text-[var(--muted)] max-[480px]:flex-wrap">
+            <span>Based in Cambodia</span><span className="h-1 w-1 rounded-full bg-[var(--accent)]" /><span>Open to internship opportunities</span>
+          </div>
+        </motion.div>
+
+        <motion.div className="relative w-full max-w-[490px] justify-self-end max-[800px]:order-0 max-[800px]:justify-self-center max-[800px]:max-w-[460px]" initial={{ opacity: 0, scale: .94, x: 35 }} animate={{ opacity: 1, scale: 1, x: 0 }} transition={{ duration: .9, delay: .15, ease }}>
+          <div className="absolute inset-[12%_-10%_-5%_5%] bg-[var(--accent)] opacity-25 blur-[75px]" />
+          <motion.img className="relative block aspect-[4/5] w-full rounded-[2px] object-cover object-top shadow-[0_25px_70px_rgba(30,25,20,.14)]" src={profile} alt="Oeung Ratha" whileHover={{ scale: 1.025 }} transition={{ duration: .5 }} />
+          <div className="absolute bottom-[18px] left-[-30px] right-[18px] flex justify-between border-l-2 border-[var(--accent)] bg-[var(--photo-label)] px-4 py-[13px] text-[10px] uppercase tracking-[1.5px] text-[var(--photo-label-text)] backdrop-blur-[10px] max-[480px]:bottom-[10px] max-[480px]:left-[10px]">
+            <span>01</span><span>Developer / Creator</span>
+          </div>
+        </motion.div>
+      </section>
+
+      <section id="about" className={`${section} grid grid-cols-[.8fr_1.2fr] gap-[100px] border-t border-[var(--line)] max-[800px]:grid-cols-1 max-[800px]:gap-[45px]`}>
+        <Reveal><p className={eyebrow}>01 — ABOUT ME</p><h2 className={heading}>Curious by nature.<br /><span className="font-serif text-[var(--accent-soft)]">Developer by choice.</span></h2></Reveal>
+        <Reveal className="max-w-[650px] pt-2" delay={.12}>
+          <p className="mb-[30px] text-[23px] leading-[1.55] text-[var(--lead)]">I'm an MIS(Management Information System) student at <strong className="text-[var(--text)]">SETEC Institute</strong>, passionate about building useful software and continuously improving my development skills.</p>
+          <p className={`text-base leading-[1.85] ${muted}`}>My main interests are full-stack web development, REST APIs, mobile development and deployment. I enjoy turning ideas into working products and learning how frontend, backend, databases and servers fit together.</p>
+          <a className="mt-[18px] inline-block border-b border-[var(--accent)] pb-2 text-sm transition hover:text-[var(--accent)]" href="#contact">Let's work together <Arrow /></a>
+        </Reveal>
+      </section>
+
+      <section id="skills" className={`${section} grid grid-cols-[.8fr_1.2fr] gap-[100px] border-t border-[var(--line)] max-[800px]:grid-cols-1 max-[800px]:gap-[45px]`}>
+        <Reveal><p className={eyebrow}>02 — SKILLS</p><h2 className={heading}>Tools I use to<br /><span className="font-serif text-[var(--accent-soft)]">build things.</span></h2></Reveal>
+        <Stagger className="grid grid-cols-2 border-t border-[var(--line)] max-[480px]:grid-cols-1">
+          {skills.map(([name, type]) => <motion.div key={name} variants={itemVariants} whileHover={{ x: 5 }} className="relative grid min-h-[105px] grid-cols-[42px_1fr] items-center gap-4 border-b border-[var(--line)] px-[25px] py-[22px] pr-12 odd:border-r odd:border-[var(--line)] max-[480px]:odd:border-r-0">
+            <span className="grid h-[42px] w-[42px] place-items-center rounded-[10px] border border-[var(--line)] bg-[var(--panel)]" style={{ color: `#${skillIcons[name]?.hex ?? "ff9900"}` }}><SkillIcon name={name} /></span>
+            <span className="flex flex-col justify-center"><span className="text-[10px] uppercase tracking-[1.5px] text-[var(--muted)]">{type}</span><span className="mt-[7px] text-xl font-semibold">{name}</span></span>
+            <span className="absolute right-5 top-5 text-[var(--accent)] opacity-0 transition group-hover:opacity-100">↗</span>
+          </motion.div>)}
+        </Stagger>
+      </section>
+
+      <section id="projects" className={`${section} border-t border-[var(--line)]`}>
+        <div className="mb-[65px] grid grid-cols-2 items-end gap-[70px] max-[800px]:grid-cols-1 max-[800px]:gap-[35px]">
+          <Reveal><p className={eyebrow}>03 — SELECTED WORK</p><h2 className={heading}>Projects I've<br /><span className="font-serif text-[var(--accent-soft)]">worked on.</span></h2></Reveal>
+          <Reveal className={`mb-1 max-w-[430px] justify-self-end leading-[1.8] ${muted} max-[800px]:justify-self-start`} delay={.12}>A selection of projects across web, backend, mobile and API development.</Reveal>
         </div>
-      </header>
+        <Stagger>
+          {projects.map(project => <motion.article key={project.number} variants={itemVariants} className="grid grid-cols-[100px_1fr_70px] items-start gap-[30px] border-t border-[var(--line)] py-[38px] transition hover:pl-[10px] max-[800px]:grid-cols-[45px_1fr_45px] max-[800px]:gap-3 max-[480px]:grid-cols-1">
+            <div className="font-serif text-xl text-[var(--accent)] max-[480px]:mb-[-5px]">{project.number}</div>
+            <div><h3 className="mb-3 text-[27px] font-semibold max-[800px]:text-[23px]">{project.title}</h3><p className={`max-w-[720px] leading-[1.7] ${muted}`}>{project.description}</p><div className="mt-5 flex flex-wrap gap-2">{project.tags.map(tag => <span key={tag} className="border border-[var(--tag-border)] px-[10px] py-1.5 text-[10px] uppercase tracking-[1px] text-[var(--tag-text)]">{tag}</span>)}</div></div>
+            <motion.a className="grid h-12 w-12 justify-self-end place-items-center rounded-full border border-[var(--button-border)] text-[var(--accent-soft)] transition hover:bg-[var(--accent)] hover:text-white max-[480px]:hidden" href={project.link} aria-label={`View ${project.title}`} whileHover={{ rotate: 8, scale: 1.08 }} whileTap={{ scale: .94 }}><Arrow /></motion.a>
+          </motion.article>)}
+        </Stagger>
+      </section>
 
-      <main>
-        <section id="home" className="hero section">
-          <motion.div
-            className="hero-copy"
-            initial={{ opacity: 0, x: -35 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="eyebrow">FULL STACK WEB DEVELOPER</p>
-            <h1>Building digital<br /><em>experiences</em> that work.</h1>
-            <p className="hero-text">
-              Hi, I'm <strong>Oeung Rotha</strong>. I create modern web applications
-              and APIs with a focus on clean UI, solid backend architecture and
-              real-world problem solving.
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#projects">View my work <Arrow /></a>
-              <a className="button button-ghost" href="#contact">Contact me</a>
-            </div>
-            <div className="hero-meta">
-              <span>Based in Cambodia</span>
-              <span className="dot"></span>
-              <span>Open to internship opportunities</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="hero-photo-wrap"
-            initial={{ opacity: 0, scale: 0.94, x: 35 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="photo-glow"></div>
-            <motion.img
-              className="hero-photo"
-              src={profile}
-              alt="Oeung Ratha"
-              whileHover={{ scale: 1.025 }}
-              transition={{ duration: 0.5 }}
-            />
-            <div className="photo-label">
-              <span>01</span>
-              <span>Developer / Creator</span>
-            </div>
-          </motion.div>
-        </section>
-
-        <section id="about" className="section about">
-          <Reveal className="section-heading">
-
-            <p className="eyebrow">01 — ABOUT ME</p>
-            <h2>Curious by nature.<br /><span>Developer by choice.</span></h2>
-          </Reveal>
-          <Reveal className="about-content" delay={0.12}>
-            <p className="lead">
-              I'm an MIS(Management Information System) student at <strong>SETEC Institute</strong>,
-              passionate about building useful software and continuously improving
-              my development skills.
-            </p>
-            <p>
-              My main interests are full-stack web development, REST APIs, mobile
-              development and deployment. I enjoy turning ideas into working
-              products and learning how frontend, backend, databases and servers
-              fit together.
-            </p>
-            <a className="text-link" href="#contact">Let's work together <Arrow /></a>
-          </Reveal>
-        </section>
-
-        <section id="skills" className="section skills-section">
-          <Reveal className="section-heading">
-
-            <p className="eyebrow">02 — SKILLS</p>
-            <h2>Tools I use to<br /><span>build things.</span></h2>
-          </Reveal>
-          <Stagger className="skills-grid">
-            {skills.map(([name, type]) => (
-              <motion.div
-                className="skill"
-                key={name}
-                variants={itemVariants}
-                whileHover={{ x: 5 }}
-                style={{ "--skill-color": `#${skillIcons[name]?.hex ?? "ff9900"}` }}
-              >
-                <span className="skill-icon"><SkillIcon name={name} /></span>
-                <span className="skill-details">
-                  <span className="skill-type">{type}</span>
-                  <span className="skill-name">{name}</span>
-                </span>
-                <span className="skill-arrow"><Arrow /></span>
-              </motion.div>
-            ))}
-          </Stagger>
-        </section>
-
-        <section id="projects" className="section projects-section">
-          <div className="projects-top">
-            <Reveal className="section-heading">
-              <p className="eyebrow">03 — SELECTED WORK</p>
-              <h2>Projects I've<br /><span>worked on.</span></h2>
-            </Reveal>
-            <Reveal className="projects-intro" delay={0.12}>
-              A selection of projects across web, backend, mobile and API development.
-            </Reveal>
+      <section className={`${section} pt-[30px]`}>
+        <Reveal className="grid grid-cols-2 gap-20 border border-[var(--line)] bg-[var(--panel)] p-[70px] max-[800px]:grid-cols-1 max-[800px]:gap-[35px] max-[800px]:p-[40px_28px]">
+          <div><p className={eyebrow}>CURRENTLY</p><h2 className="m-0 text-[clamp(48px,6vw,75px)] leading-[.94] tracking-[-4px]">Learning.<br />Building.<br /><span className="font-serif text-[var(--accent-soft)]">Improving.</span></h2></div>
+          <div className="self-end"><p className={`text-base leading-[1.8] ${muted}`}>I'm looking for an internship as a Full Stack Developer where I can work with an experienced team, contribute to real products and gain practical industry experience.</p>
+            <div className="mt-[45px] flex gap-[45px] max-[800px]:gap-[25px]"><div className="flex flex-col gap-1.5"><strong className="text-xl">IT</strong><span className="text-[10px] uppercase tracking-[1.5px] text-[var(--muted)]">Student</span></div><div className="flex flex-col gap-1.5"><strong className="text-xl">SETEC</strong><span className="text-[10px] uppercase tracking-[1.5px] text-[var(--muted)]">Institute</span></div><div className="flex flex-col gap-1.5"><strong className="text-xl">2026</strong><span className="text-[10px] uppercase tracking-[1.5px] text-[var(--muted)]">Building</span></div></div>
           </div>
+        </Reveal>
+      </section>
 
-          <Stagger className="projects-list">
-            {projects.map((project) => (
-              <motion.article className="project" key={project.number} variants={itemVariants}>
-                <div className="project-number">{project.number}</div>
-                <div className="project-main">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="tags">
-                    {project.tags.map(tag => <span key={tag}>{tag}</span>)}
-                  </div>
-                </div>
-                <motion.a
-                  className="project-link"
-                  href={project.link}
-                  aria-label={`View ${project.title}`}
-                  whileHover={{ rotate: 8, scale: 1.08 }}
-                  whileTap={{ scale: 0.94 }}
-                >
-                  <Arrow />
-                </motion.a>
-              </motion.article>
-            ))}
-          </Stagger>
-        </section>
+      <section id="contact" className={`${section} border-t border-[var(--line)] text-center`}>
+        <Reveal><p className={`${eyebrow} mb-[35px]`}>04 — CONTACT</p><h2 className="mb-[30px] text-[clamp(58px,9vw,115px)] leading-[.88] tracking-[-6px] max-[480px]:tracking-[-4px]">Have a project<br /><em className="font-serif text-[var(--accent-soft)]">in mind?</em></h2>
+          <p className={`mx-auto mb-[30px] max-w-[500px] leading-[1.7] ${muted}`}>I'm always interested in learning, building and connecting with people working on interesting products.</p>
+          <a className="inline-block border-b border-[var(--accent)] pb-[9px] text-[clamp(22px,3vw,32px)] transition hover:-translate-y-0.5 hover:text-[var(--accent-soft)]" href="mailto:your@email.com">your@email.com <Arrow /></a>
+          <div className="mt-[65px] flex justify-center gap-7 max-[480px]:mt-10"><a className="text-xs uppercase tracking-[1.5px] text-[var(--social)] transition hover:-translate-y-0.5 hover:text-[var(--accent)]" href="#" aria-label="GitHub">GitHub</a><a className="text-xs uppercase tracking-[1.5px] text-[var(--social)] transition hover:-translate-y-0.5 hover:text-[var(--accent)]" href="#" aria-label="LinkedIn">LinkedIn</a><a className="text-xs uppercase tracking-[1.5px] text-[var(--social)] transition hover:-translate-y-0.5 hover:text-[var(--accent)]" href="#" aria-label="Facebook">Facebook</a></div>
+        </Reveal>
+      </section>
+    </main>
 
-        <section className="section journey">
-          <Reveal className="journey-card">
-            <div>
-              <p className="eyebrow">CURRENTLY</p>
-              <h2>Learning.<br />Building.<br /><span>Improving.</span></h2>
-            </div>
-            <div className="journey-text">
-              <p>
-                I'm looking for an internship as a Full Stack Developer where I can
-                work with an experienced team, contribute to real products and gain
-                practical industry experience.
-              </p>
-              <div className="mini-stats">
-                <div><strong>IT</strong><span>Student</span></div>
-                <div><strong>SETEC</strong><span>Institute</span></div>
-                <div><strong>2026</strong><span>Building</span></div>
-              </div>
-            </div>
-          </Reveal>
-        </section>
-
-        <section id="contact" className="section contact">
-          <Reveal>
-            <p className="eyebrow">04 — CONTACT</p>
-          <h2>Have a project<br /><em>in mind?</em></h2>
-          <p className="contact-copy">
-            I'm always interested in learning, building and connecting with people
-            working on interesting products.
-          </p>
-          <a className="email" href="mailto:your@email.com">your@email.com <Arrow /></a>
-          <div className="socials">
-            <a href="#" aria-label="GitHub">GitHub</a>
-            <a href="#" aria-label="LinkedIn">LinkedIn</a>
-            <a href="#" aria-label="Facebook">Facebook</a>
-          </div>
-          </Reveal>
-        </section>
-      </main>
-
-      <footer>
-        <span>© 2026 Oeung Ratha</span>
-        <span>Built with React</span>
-        <a href="#home">Back to top ↑</a>
-      </footer>
-    </div>
-  );
+    <footer className="mx-auto flex w-[min(1180px,calc(100%-48px))] justify-between border-t border-[var(--line)] py-7 pb-10 text-[11px] uppercase tracking-[1px] text-[var(--footer)] max-[480px]:flex-col max-[480px]:gap-[14px]">
+      <span>© 2026 Oeung Ratha</span><span>Built with React + Tailwind CSS</span><a className="transition hover:text-[var(--accent)]" href="#home">Back to top ↑</a>
+    </footer>
+  </div>;
 }
 
-createRoot(document.getElementById("root")).render(
-  <React.StrictMode><App /></React.StrictMode>
-);
+createRoot(document.getElementById("root")).render(<React.StrictMode><App /></React.StrictMode>);
