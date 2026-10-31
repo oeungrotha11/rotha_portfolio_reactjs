@@ -1,3 +1,5 @@
+import { siDocker, siDjango, siFlutter, siGithub, siJavascript, siLaravel, siMysql, siNginx, siOpenapiinitiative, siReact, siSpringboot } from "simple-icons";
+
 const projects = [
   { number: "01", title: "E-Commerce API", description: "A Laravel-based e-commerce backend with authentication, categories, products, variants, cart, wishlist, checkout and order management.", tags: ["Laravel", "PHP", "MySQL", "REST API", "Sanctum"], link: "#" },
   { number: "02", title: "POS Mobile App", description: "A Flutter POS application with product browsing, categories, search, cart management, authentication and REST API integration.", tags: ["Flutter", "Dart", "REST API", "Provider"], link: "#" },

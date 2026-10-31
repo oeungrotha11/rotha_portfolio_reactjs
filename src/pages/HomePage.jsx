@@ -1,8 +1,5 @@
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import {
-  siDocker, siDjango, siFlutter, siGithub, siJavascript, siLaravel,
-  siMysql, siNginx, siOpenapiinitiative, siReact, siSpringboot
-} from "simple-icons";
 import profile from "../assets/photo_2026-01-05_00-08-44.jpg";
 import SkillIcon from "../components/skills/SkillIcon.jsx";
 import Arrow from "../components/ui/Arrow.jsx";
@@ -11,6 +8,9 @@ import Stagger from "../components/motion/Stagger.jsx";
 import SiteHeader from "../components/layout/SiteHeader.jsx";
 import SiteFooter from "../components/layout/SiteFooter.jsx";
 import { projects, skills, skillIcons } from "../data/portfolio.js";
+
+const ease = [0.22, 1, 0.36, 1];
+const itemVariants = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.55, ease } } };
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
