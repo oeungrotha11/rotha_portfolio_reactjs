@@ -4,7 +4,7 @@ import Stagger from "../motion/Stagger.jsx";
 import SkillIcon from "../skills/SkillIcon.jsx";
 import { skills, skillIcons } from "../../data/portfolio.js";
 import { section, eyebrow, heading, muted, itemVariants } from "../../constants/tailwind.js";
-
+import React from "react";
 export default function SkillsSection() {
   return (
 <section id="skills" className={`${section} grid grid-cols-[.8fr_1.2fr] gap-[100px] border-t border-[var(--line)] max-[800px]:grid-cols-1 max-[800px]:gap-[45px]`}>

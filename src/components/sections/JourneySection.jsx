@@ -1,6 +1,6 @@
 import Reveal from "../motion/Reveal.jsx";
 import { section, eyebrow, muted } from "../../constants/tailwind.js";
-
+import React from "react";
 export default function JourneySection() {
   return (
 <section className={`${section} pt-[30px]`}>

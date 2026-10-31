@@ -1,5 +1,6 @@
 import Reveal from "../motion/Reveal.jsx";
 import Arrow from "../ui/Arrow.jsx";
+import React from "react";
 import { section, eyebrow, heading, muted } from "../../constants/tailwind.js";
 
 export default function AboutSection() {

@@ -1,6 +1,6 @@
 import { siDocker, siDjango, siFlutter, siGithub, siJavascript, siLaravel, siMysql, siNginx, siOpenapiinitiative, siReact, siSpringboot } from "simple-icons";
 import { skillIcons } from "../../data/portfolio.js";
-
+import React from "react";
 export default function SkillIcon({ name }) {
   const icon = skillIcons[name];
   if (!icon) {

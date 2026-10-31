@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import profile from "../../assets/photo_2026-01-05_00-08-44.jpg";
 import Arrow from "../ui/Arrow.jsx";
+import React from "react";
 import { section, eyebrow, muted, ease } from "../../constants/tailwind.js";
 
 export default function HeroSection() {

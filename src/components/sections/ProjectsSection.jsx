@@ -4,7 +4,7 @@ import Stagger from "../motion/Stagger.jsx";
 import Arrow from "../ui/Arrow.jsx";
 import { projects } from "../../data/portfolio.js";
 import { section, eyebrow, heading, muted, itemVariants } from "../../constants/tailwind.js";
-
+import React from "react";
 export default function ProjectsSection() {
   return (
 <section id="projects" className={`${section} border-t border-[var(--line)]`}>

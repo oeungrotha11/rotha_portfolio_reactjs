@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import React from "react";
 const ease = [0.22, 1, 0.36, 1];
 const itemVariants = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.55, ease } } };
 export default function Stagger({ children, className = "" }) {

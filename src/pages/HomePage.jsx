@@ -1,3 +1,4 @@
+import React from "react";
 import useTheme from "../hooks/useTheme.js";
 import SiteHeader from "../components/layout/SiteHeader.jsx";
 import SiteFooter from "../components/layout/SiteFooter.jsx";
