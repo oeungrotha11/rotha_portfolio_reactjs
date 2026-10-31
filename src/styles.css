@@ -390,3 +390,57 @@ footer a:hover { color: #ddd; }
     transition-duration: .01ms !important;
   }
 }
+
+/* Accessible text and border colors for light theme */
+:root[data-theme="light"] .nav nav a,
+:root[data-theme="light"] .nav-cta {
+  color: #5c5851;
+}
+:root[data-theme="light"] .nav nav a:hover,
+:root[data-theme="light"] .nav-cta:hover {
+  color: var(--accent);
+}
+:root[data-theme="light"] .nav-cta {
+  border-color: var(--button-border);
+}
+:root[data-theme="light"] .hero-text strong {
+  color: #171614;
+}
+:root[data-theme="light"] .hero-meta {
+  color: #68645e;
+}
+:root[data-theme="light"] .button-ghost {
+  color: #292722;
+  border-color: var(--button-border);
+}
+:root[data-theme="light"] .button-ghost:hover {
+  color: #171614;
+  border-color: #8e877c;
+}
+:root[data-theme="light"] .about-content .lead {
+  color: #34312d;
+}
+:root[data-theme="light"] .skill-type,
+:root[data-theme="light"] .mini-stats span {
+  color: #68645e;
+}
+:root[data-theme="light"] .tags span {
+  color: #625e57;
+}
+:root[data-theme="light"] .project-link {
+  border-color: var(--button-border);
+}
+:root[data-theme="light"] .journey-card {
+  border-color: var(--line);
+}
+:root[data-theme="light"] .socials a {
+  color: #625e57;
+}
+:root[data-theme="light"] .socials a:hover,
+:root[data-theme="light"] footer a:hover {
+  color: var(--accent);
+}
+:root[data-theme="light"] footer {
+  color: #625e57;
+}
+
