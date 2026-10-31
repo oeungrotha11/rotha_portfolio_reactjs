@@ -9,7 +9,7 @@ const projects = [
 
 const skills = [
   ["React", "Frontend"], ["JavaScript", "Frontend"], ["Laravel", "Backend"],
-  ["Spring Boot", "Backend"], ["Django", "Backend"], ["Flutter", "Mobile"],
+  ["Spring Boot", "Backend"], ["Django", "Backend"], ["Flutter", "Mobile"], ["Dart", "Mobile"],
   ["MySQL", "Database"], ["REST API", "Architecture"], ["Git / GitHub", "Tools"],
   ["Docker", "DevOps"], ["Nginx", "DevOps"], ["AWS EC2", "Cloud"]
 ];
