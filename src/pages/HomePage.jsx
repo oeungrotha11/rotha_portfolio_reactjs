@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import useTheme from "../hooks/useTheme.js";
 import SiteHeader from "../components/layout/SiteHeader.jsx";
 import SiteFooter from "../components/layout/SiteFooter.jsx";
 import HeroSection from "../components/sections/HeroSection.jsx";
@@ -9,19 +9,11 @@ import JourneySection from "../components/sections/JourneySection.jsx";
 import ContactSection from "../components/sections/ContactSection.jsx";
 
 
-function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("ratha-theme");
-    return saved ? saved === "dark" : true;
-  });
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = darkMode ? "dark" : "light";
-    localStorage.setItem("ratha-theme", darkMode ? "dark" : "light");
-  }, [darkMode]);
+function HomePage() {
+  const { darkMode, toggleTheme } = useTheme();
 
   return <div className="site min-h-screen overflow-x-clip bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
-    <SiteHeader darkMode={darkMode} onToggleTheme={() => setDarkMode(value => !value)} />
+    <SiteHeader darkMode={darkMode} onToggleTheme={toggleTheme} />
 
     <main>
       <HeroSection />
@@ -41,4 +33,4 @@ function App() {
   </div>;
 }
 
-export default App;
+export default HomePage;
