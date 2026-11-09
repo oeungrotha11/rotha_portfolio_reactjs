@@ -10,7 +10,7 @@ export default function AboutSection() {
         <Reveal className="max-w-[650px] pt-2" delay={.12}>
           <p className="mb-[30px] text-[23px] leading-[1.55] text-[var(--lead)]">I'm an MIS (Management Information Systems) student at <strong className="text-[var(--text)]">SETEC Institute</strong> who enjoys building software across both web and mobile platforms.</p>
           <p className={`text-base leading-[1.85] ${muted}`}>On the web, I work with React and JavaScript on the frontend, and technologies such as Laravel, Spring Boot and Django for backend development and REST APIs. For mobile, I use Flutter and Dart to build cross-platform applications and connect them to backend services. I also enjoy working with databases, Firebase and deployment tools to understand how a complete product comes together.</p>
-          <a className="mt-[18px] inline-block border-b border-[var(--accent)] pb-2 text-sm transition hover:text-[var(--accent)]" href="#contact">Let's work together <Arrow /></a>
+          <a className="inline-flex items-center justify-center gap-[5px] mt-[18px] border-b border-[var(--accent)] pb-2 text-sm transition hover:text-[var(--accent)]" href="#contact">Let's work together <Arrow /></a>
         </Reveal>
       </section>
   );
