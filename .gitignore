@@ -3,3 +3,6 @@ dist/
 .env
 .env.*
 !.env.example
+# Deployment archives
+portfolio-dist.tar.gz
+portfolio-part-*

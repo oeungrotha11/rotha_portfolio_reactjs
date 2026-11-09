@@ -18,7 +18,12 @@ export default function ProjectsSection() {
           <div className=" text-xl text-[var(--accent)] max-[480px]:mb-[-5px]">{project.number}</div>
           <div><h3 className="mb-3 text-[27px] font-semibold max-[800px]:text-[23px]">{project.title}</h3><p className={`max-w-[720px] leading-[1.7] ${muted}`}>{project.description}</p><div className="mt-5 flex flex-wrap gap-2">{project.tags.map(tag => <span key={tag} className="border border-[var(--tag-border)] px-[10px] py-1.5 text-[10px] uppercase tracking-[1px] text-[var(--tag-text)]">{tag}</span>)}</div></div>
           <div className="max-[480px]:col-start-2 max-[480px]:mt-2">
-            <Link className="inline-flex items-center gap-2 text-sm text-[var(--accent-soft)] transition hover:text-[var(--text)]" to={`/projects/${project.slug}`}>
+            <Link
+              className="inline-flex items-center gap-2 text-sm text-[var(--accent-soft)] transition hover:text-[var(--text)]"
+              to={`/projects/${project.slug}`}
+              state={{ returnToProjects: true }}
+              onClick={() => sessionStorage.setItem("projectsScrollY", String(window.scrollY))}
+            >
               View project <Arrow />
             </Link>
           </div>

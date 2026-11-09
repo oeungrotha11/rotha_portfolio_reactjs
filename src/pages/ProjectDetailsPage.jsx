@@ -1,12 +1,14 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Arrow from "../components/ui/Arrow.jsx";
 import FlutterProjectPreview from "../components/sections/FlutterProjectPreview.jsx";
 import useTheme from "../hooks/useTheme.js";
 import { projects } from "../data/portfolio.js";
+import { Moon, MoveLeft, Sun } from "lucide-react";
 
 export default function ProjectDetailsPage() {
   const { slug } = useParams();
+  const location = useLocation();
   const project = projects.find(item => item.slug === slug);
   const { darkMode, toggleTheme } = useTheme();
 
@@ -17,15 +19,21 @@ export default function ProjectDetailsPage() {
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
       <header className="sticky top-0 z-50 flex h-[76px] items-center justify-between border-b border-[var(--line)] bg-[var(--bg)] px-6 sm:px-10">
-        <Link className="text-sm text-[var(--muted)] transition hover:text-[var(--accent-soft)]" to="/">
-          ← Back to projects
+        <Link
+          className="inline-flex items-center justify-content-center gap-2 text-sm text-[var(--muted)] transition hover:text-[var(--accent-soft)]"
+          to="/"
+          state={location.state?.returnToProjects ? { restoreProjectsScroll: true } : undefined}
+        >
+          <MoveLeft size={12} /> Back to projects
         </Link>
         <button
-          className="rounded-full border border-[var(--button-border)] px-4 py-2 text-xs transition hover:border-[var(--accent)]"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--button-border)] px-4 py-2 text-xs transition hover:border-[var(--accent)] max-[800px]:[&>span:last-child]:hidden"
           onClick={toggleTheme}
           aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
         >
-          {darkMode ? "☀ Light" : "☾ Dark"}
+          {darkMode ?  <Sun size={12} />  : <Moon size={12} />}
+          <span>{darkMode ? "Light" : "Dark"}</span>
+
         </button>
       </header>
 
