@@ -16,7 +16,7 @@ export default function ProjectDetailsPage() {
 
   return (
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
-      <header className="flex h-[76px] items-center justify-between border-b border-[var(--line)] px-6 sm:px-10">
+      <header className="sticky top-0 z-50 flex h-[76px] items-center justify-between border-b border-[var(--line)] bg-[var(--bg)] px-6 sm:px-10">
         <Link className="text-sm text-[var(--muted)] transition hover:text-[var(--accent-soft)]" to="/">
           ← Back to projects
         </Link>
