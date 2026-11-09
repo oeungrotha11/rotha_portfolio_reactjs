@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap');
 :root {
   color-scheme: dark;
-  --bg:#0b0b0b; --panel:#121212; --text:#f3f0ea; --muted:#9a9791; --line:#2a2927;
+  --bg:#101010; --panel:#121212; --text:#f3f0ea; --muted:#9a9791; --line:#2a2927;
   --accent:#c9342f; --accent-soft:#e2524c; --header:rgba(11,11,11,.88); --button-border:#3b3936;
   --tag-border:#302e2b; --tag-text:#aaa69f; --lead:#dedbd5; --social:#85817b; --footer:#9a9791;
   --photo-label:rgba(10,10,10,.78); --photo-label-text:#d6d2ca;

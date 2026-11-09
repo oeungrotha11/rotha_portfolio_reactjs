@@ -8,6 +8,7 @@ export default function SiteHeader({ darkMode, onToggleTheme }) {
       <nav className="flex gap-[34px] text-sm text-[var(--muted)] max-[800px]:hidden"> 
         <a className="transition-colors hover:text-[var(--accent)]" href="#about">About</a> 
         <a className="transition-colors hover:text-[var(--accent)]" href="#skills">Skills</a> 
+        <a className="transition-colors hover:text-[var(--accent)]" href="#certificates">Certificates</a> 
         <a className="transition-colors hover:text-[var(--accent)]" href="#projects">Projects</a> 
         <a className="transition-colors hover:text-[var(--accent)]" href="#contact">Contact</a> 
       </nav> 
