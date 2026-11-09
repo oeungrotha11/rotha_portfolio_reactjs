@@ -14,7 +14,7 @@ export default function CertificateSection() {
         <div className="mb-[65px] grid grid-cols-2 items-end gap-[70px] max-[800px]:grid-cols-1 max-[800px]:gap-[35px]">
           <Reveal>
             <p className={eyebrow}>03 — CERTIFICATES</p>
-            <h2 className={heading}>Learning milestones<br /><span className="font-serif text-[var(--accent-soft)]">that shaped my growth.</span></h2>
+            <h2 className={heading}>Learning milestones<br /><span className="text-[var(--accent-soft)]">that shaped my growth.</span></h2>
           </Reveal>
           <Reveal className={`max-w-[430px] justify-self-end leading-[1.8] ${muted} max-[800px]:justify-self-start`} delay={.12}>
             A collection of certifications and program completions that support my work in frontend, backend, and product development.
@@ -27,7 +27,7 @@ export default function CertificateSection() {
 
           <div className="relative z-20 mb-3 flex items-center justify-between text-[10px] uppercase tracking-[2px] text-[var(--muted)]">
             <span className="drop-shadow-[0_1px_0_rgba(0,0,0,0.65)]">Swipe to explore</span>
-            <span className="rounded-full border border-[var(--button-border)] bg-[rgba(10,10,10,0.35)] px-2 py-1 backdrop-blur-[2px]">Drag</span>
+            <span className="rounded-full border border-[var(--button-border)] bg-[var(--panel)] px-2 py-1">Drag</span>
           </div>
 
           <div className="relative z-20 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" aria-label="Certificate gallery">
@@ -36,7 +36,7 @@ export default function CertificateSection() {
                 key={`${certificate.title}-${certificate.year}`}
                 variants={itemVariants}
                 whileHover={{ y: -8 }}
-                className="group relative min-w-[290px] max-w-[340px] flex-1 snap-start overflow-hidden rounded-[24px] border border-[var(--line)] bg-[linear-gradient(180deg,rgba(22,22,22,0.9),rgba(10,10,10,0.96))] p-4 shadow-[0_20px_50px_rgba(0,0,0,0.08)] max-[480px]:min-w-[260px]"
+                className="group relative min-w-[290px] max-w-[340px] flex-1 snap-start overflow-hidden rounded-[24px] border border-[var(--line)] bg-[linear-gradient(180deg,var(--panel),var(--bg))] p-4 shadow-[0_20px_50px_rgba(0,0,0,0.0)] max-[480px]:min-w-[260px]"
               >
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent-soft)] to-transparent opacity-90" />
 
@@ -46,7 +46,7 @@ export default function CertificateSection() {
                   className="group relative block w-full cursor-pointer text-left"
                   aria-label={`View ${certificate.title} certificate`}
                 >
-                  <div className="relative overflow-hidden rounded-[18px] border border-[var(--line)] bg-[radial-gradient(circle_at_top,_rgba(201,52,47,0.18),_rgba(11,11,11,1)_52%)]">
+                  <div className="relative overflow-hidden rounded-[18px] border border-[var(--line)] bg-[radial-gradient(circle_at_top,_rgba(201,52,47,0.18),_var(--panel)_52%)]">
                     {certificate.image ? (
                       <>
                         <img
@@ -61,7 +61,7 @@ export default function CertificateSection() {
                         </div>
                       </>
                     ) : (
-                      <div className="flex h-[220px] flex-col justify-between bg-[radial-gradient(circle_at_top,_rgba(201,52,47,0.18),_rgba(17,17,17,1)_55%)] p-5">
+                      <div className="flex h-[220px] flex-col justify-between bg-[radial-gradient(circle_at_top,_rgba(201,52,47,0.18),_var(--panel)_55%)] p-5">
                         <div className="flex items-center justify-between text-[10px] uppercase tracking-[2px] text-[var(--muted)]">
                           <span>{certificate.category}</span>
                           <span>{certificate.year}</span>

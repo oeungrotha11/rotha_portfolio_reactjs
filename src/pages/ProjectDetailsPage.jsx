@@ -65,7 +65,7 @@ export default function ProjectDetailsPage() {
           </div>
         </section>
 
-        {project.slug === "pos-mobile-app" && <FlutterProjectPreview />}
+        {project.slug === "food-ordering-mobile-app" && <FlutterProjectPreview />}
       </main>
     </div>
   );

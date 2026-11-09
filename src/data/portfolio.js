@@ -1,4 +1,4 @@
-import { siDocker, siDjango, siFlutter, siGithub, siJavascript, siLaravel, siMysql, siNginx, siOpenapiinitiative, siReact, siSpringboot, siDart } from "simple-icons";
+import { siDocker, siDjango, siFlutter, siGithub, siJavascript, siLaravel, siMysql, siNginx, siOpenapiinitiative, siReact, siSpringboot, siDart, siPostgresql } from "simple-icons";
 import internCert from "../assets/intern cert.jpg";
 import frontReactCert from "../assets/front react cert.jpg";
 import backLaravelCert from "../assets/back laravel cert.jpg";
@@ -18,6 +18,7 @@ import orderSuccessScreen from "../assets/flutter preview images and vdo/oder su
 import orderHistoryScreen from "../assets/flutter preview images and vdo/order history screen.png";
 import searchScreen from "../assets/flutter preview images and vdo/search screen.png";
 import googleSignInScreen from "../assets/flutter preview images and vdo/sigin with google.png";
+import { SiCircle } from "@icons-pack/react-simple-icons";
 
 const flutterPreview = {
   video: foodiePreviewVideo,
@@ -41,15 +42,13 @@ const flutterPreview = {
 
 const projects = [
   { number: "01", slug: "e-commerce-shopping", title: "E-Commerce Shopping", description: "A Laravel-based e-commerce backend with authentication, categories, products, variants, cart, wishlist, checkout and order management.", tags: ["Laravel", "ReactJs", "MySQL", "REST API", "Sanctum"], liveUrl: "https://ecommerce-shopping-ht-frontend.vercel.app/" },
-  { number: "02", slug: "food-ordering-mobile-app", title: "Food Ordering Mobile App", description: "A Flutter food ordering application with product browsing, categories, search, cart management, authentication and REST API integration.", tags: ["Flutter", "Dart", "REST API", "Provider"] },
-  { number: "03", slug: "order-management-api", title: "Order Management API", description: "A Spring Boot REST API using layered architecture, DTOs, ModelMapper, authentication and database persistence for order workflows.", tags: ["Spring Boot", "Java", "JPA", "MySQL"] },
-  { number: "04", slug: "customer-management-api", title: "Customer Management API", description: "A Django REST API project focused on structured CRUD operations, database models and API endpoints for customer management.", tags: ["Django", "Python", "REST API", "MySQL"] }
+  { number: "02", slug: "food-ordering-mobile-app", title: "Food Ordering Mobile App", description: "A Flutter food ordering application with product browsing, categories, search, cart management, authentication and REST API integration.", tags: ["Flutter", "Dart", "REST API", "Provider"] }
 ];
   
 const skills = [
   ["React", "Frontend"], ["JavaScript", "Frontend"], ["Laravel", "Backend"],
   ["Spring Boot", "Backend"], ["Django", "Backend"], ["Flutter", "Mobile"], ["Dart", "Mobile"],
-  ["MySQL", "Database"], ["REST API", "Architecture"], ["Git / GitHub", "Tools"],
+  ["MySQL", "Database"], ["PostgreSQL", "Database"], ["REST API", "Architecture"], ["Git / GitHub", "Tools"],
   ["Docker", "DevOps"], ["Nginx", "DevOps"], ["AWS EC2", "Cloud"]
 ];
 
@@ -62,7 +61,7 @@ const certificates = [
 
 const skillIcons = {
   React: siReact, JavaScript: siJavascript, Laravel: siLaravel,
-  "Spring Boot": siSpringboot, Django: siDjango, Flutter: siFlutter, Dart: siDart,
+  "Spring Boot": siSpringboot, Django: siDjango, Flutter: siFlutter, Dart: siDart, PostgreSQL: siPostgresql,
   MySQL: siMysql, "REST API": siOpenapiinitiative, "Git / GitHub": siGithub,
   Docker: siDocker, Nginx: siNginx
 };
